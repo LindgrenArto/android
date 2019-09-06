@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Hello world</string>
+    <string name="test">Test</string>
+    <string name="desc">Mydescript</string>
+    <string name="textView">Hello World!</string>
+    <string name="guess">Guess game</string>
+
 </resources>
