@@ -5,4 +5,10 @@
         <string name="desc">Mydesc</string>
         <string name="textView">Hei maailma!</string>
         <string name="guess">Guess game</string>
+
+
+        <string name="big">Iso</string>
+        <string name="small">Pieni</string>
+        <string name="guessNumber">Arvaa numero</string>
+
 </resources>
