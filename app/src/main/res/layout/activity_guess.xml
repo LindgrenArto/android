@@ -15,7 +15,7 @@
         android:layout_marginTop="125dp"
         android:layout_marginEnd="106dp"
         android:gravity="center|center_horizontal"
-        android:text="@string/guessNumber"
+        android:text="@string/headtail"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,25 +24,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/heads"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="93dp"
         android:layout_marginTop="272dp"
         android:layout_marginEnd="48dp"
-        android:text="@string/big"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
+        android:onClick="onClick"
+        android:text="@string/heads"
+        app:layout_constraintEnd_toStartOf="@+id/tails"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/tails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="272dp"
         android:layout_marginEnd="92dp"
-        android:text="@string/small"
+        android:onClick="onClick"
+        android:text="@string/tails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

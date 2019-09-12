@@ -4,11 +4,11 @@
         <string name="test">Testi</string>
         <string name="desc">Mydesc</string>
         <string name="textView">Hei maailma!</string>
-        <string name="guess">Guess game</string>
+        <string name="guess">Kruuna vai Klaava</string>
 
 
-        <string name="big">Iso</string>
-        <string name="small">Pieni</string>
-        <string name="guessNumber">Arvaa numero</string>
+        <string name="heads">Kruuna</string>
+        <string name="tails">Klaava</string>
+        <string name="headtail">Kruuna vai Klaava</string>
 
 </resources>

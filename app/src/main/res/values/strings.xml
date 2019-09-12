@@ -3,11 +3,11 @@
     <string name="test">Test</string>
     <string name="desc">Mydescript</string>
     <string name="textView">Hello World!</string>
-    <string name="guess">Guess game</string>
+    <string name="guess">Heads or Tails</string>
 
-    <string name="big">Big</string>
-    <string name="small">Small</string>
-    <string name="guessNumber">Guess number</string>
+    <string name="heads">Heads</string>
+    <string name="tails">Tails</string>
+    <string name="headtail">Heads or Tails</string>
 
 
 </resources>
