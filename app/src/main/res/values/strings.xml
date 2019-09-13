@@ -8,6 +8,6 @@
     <string name="heads">Heads</string>
     <string name="tails">Tails</string>
     <string name="headtail">Heads or Tails</string>
-
+    <string name="zero">0</string>
 
 </resources>
