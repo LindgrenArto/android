@@ -9,5 +9,6 @@
     <string name="tails">Tails</string>
     <string name="headtail">Heads or Tails</string>
     <string name="zero">0</string>
+    <string name="highScore">High Score: </string>
 
 </resources>

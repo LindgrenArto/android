@@ -11,5 +11,6 @@
     <string name="tails">Klaava</string>
     <string name="headtail">Kruuna vai Klaava</string>
     <string name="zero">0</string>
+    <string name="highScore">Korkein tulos: </string>
 
 </resources>

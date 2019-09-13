@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +18,10 @@ public class GuessActivity extends AppCompatActivity {
     Button heads;
     Button tails;
     TextView totalWins;
+    TextView scoreView;
+    ProgressBar scoreBar;
     int currentWins;
+    int highScore;
 
 
     @Override
@@ -29,43 +33,44 @@ public class GuessActivity extends AppCompatActivity {
         heads = findViewById(R.id.heads);
         tails = findViewById(R.id.tails);
         totalWins = findViewById(R.id.wins);
+        scoreView = findViewById(R.id.highScore);
+        scoreBar = findViewById(R.id.scoreBar);
     }
 
     public int getRnd() {
         Random rnd = new Random();
         return rnd.nextInt(2);
     }
-
-    public void winnings(){
+    public void setHighScore(int score) {
+        scoreView.append(Integer.toString(score));
+    }
+    public void setWinnings(){
         String winnings = Integer.toString(currentWins);
         totalWins.setText(winnings);
+
     }
 
+
     public void onClick(View view){
+        int rnd = getRnd();
         switch (view.getId()){
             case R.id.heads:
-                Log.i(TAG, "heads");
-               Log.i(TAG, Integer.toString(getRnd()));
-                if(getRnd() == 0){
+                if(rnd == 0){
                     currentWins++;
-                   winnings();
-                    Log.i(TAG, "kruuna");
+                    setWinnings();
                 } else {
-                     currentWins = 0;
-                  winnings();
+                    currentWins = 0;
+                    totalWins.setText("0");
                 }
                 break;
 
             case R.id.tails:
-                Log.i(TAG, "tails");
-                Log.i(TAG, Integer.toString(getRnd()));
-                if(getRnd() == 1){
+                if(rnd == 1){
                     currentWins++;
-                    winnings();
-                    Log.i(TAG, "klaava");
+                    setWinnings();
                 } else {
                     currentWins = 0;
-                    winnings();
+                    totalWins.setText("0");
                 }
                 break;
 
