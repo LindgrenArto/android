@@ -17,9 +17,9 @@ public class GuessActivity extends AppCompatActivity {
 
     Button heads;
     Button tails;
-    TextView totalWins;
-    TextView scoreView;
-    ProgressBar scoreBar;
+    TextView totalWins = findViewById(R.id.wins;
+    TextView scoreView = findViewById(R.id.highScore) ;
+    ProgressBar scoreBar = findViewById(R.id.scoreBar);
     int currentWins;
     int highScore;
 
@@ -32,9 +32,6 @@ public class GuessActivity extends AppCompatActivity {
 
         heads = findViewById(R.id.heads);
         tails = findViewById(R.id.tails);
-        totalWins = findViewById(R.id.wins);
-        scoreView = findViewById(R.id.highScore);
-        scoreBar = findViewById(R.id.scoreBar);
     }
 
     public int getRnd() {
