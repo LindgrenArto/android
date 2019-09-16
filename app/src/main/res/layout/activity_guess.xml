@@ -70,35 +70,58 @@
 
     <TextView
         android:id="@+id/highScore"
-        android:layout_width="182dp"
-        android:layout_height="50dp"
+        android:layout_width="83dp"
+        android:layout_height="30dp"
         android:layout_marginStart="138dp"
-        android:layout_marginTop="102dp"
         android:layout_marginEnd="140dp"
-        android:layout_marginBottom="114dp"
+        android:layout_marginBottom="112dp"
         android:gravity="center"
         android:text="@string/highScore"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heads"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.86"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/scoreBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="148dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="181dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginEnd="182dp"
-        android:layout_marginBottom="184dp"
-        android:scrollbarSize="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/highScore"
+    <ImageView
+        android:id="@+id/rightAnswer"
+        android:layout_width="192dp"
+        android:layout_height="367dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="rightAnswer"
+        app:layout_constraintBottom_toTopOf="@+id/tails"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_rightanswer" />
+
+    <ImageView
+        android:id="@+id/wrongAnswer"
+        android:layout_width="198dp"
+        android:layout_height="345dp"
+        android:layout_marginStart="108dp"
+        app:layout_constraintBottom_toTopOf="@+id/tails"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wins" />
+        app:srcCompat="@drawable/ic_wronganswer" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="76dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="96dp"
+        android:gravity="center"
+        android:text="@string/score"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/highScore"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
