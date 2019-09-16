@@ -124,4 +124,16 @@
         app:layout_constraintEnd_toStartOf="@+id/highScore"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        android:onClick="onRefresh"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_rotate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

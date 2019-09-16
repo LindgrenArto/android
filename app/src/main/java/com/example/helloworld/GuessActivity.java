@@ -25,6 +25,7 @@ public class GuessActivity extends AppCompatActivity {
     TextView scoreView;
     int currentWins;
     int highScore;
+    private String best = "HighScore";
     ImageView rightAnswerImage, wrongAnswerImage;
     Animation rightAnimation, wrongAnimation;
 
@@ -43,16 +44,16 @@ public class GuessActivity extends AppCompatActivity {
         wrongAnswerImage = findViewById(R.id.wrongAnswer);
 
         Intent intent = new Intent(this, GuessActivity.class);
-        intent.putExtra("HighScore", highScore);
+        intent.putExtra(best, highScore);
 
         Bundle extras = getIntent().getExtras();
         if( extras == null) {
             highScore = 0;
         } else {
-            Integer bestScore = extras.getInt("HighScore");
-            highScore = bestScore;
+            highScore = extras.getInt(best);
+            scoreView.setText(Integer.toString(highScore));
         }
-        
+
         rightAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.rightanswer);
 
@@ -119,5 +120,11 @@ public class GuessActivity extends AppCompatActivity {
                     break;
 
         }
+    }
+
+    public void onRefresh(View view) {
+        Intent intent = new Intent(this, GuessActivity.class);
+        intent.putExtra(best, highScore);
+        startActivity(intent);
     }
 }
