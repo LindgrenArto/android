@@ -8,19 +8,18 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
-public class GuessActivity extends AppCompatActivity {
+public class GuessActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "Guess activity";
 
-    Button heads;
-    Button tails;
+    Button headsButton;
+    Button tailsButton;
     TextView totalWins;
     TextView scoreView;
     int currentWins;
@@ -38,8 +37,10 @@ public class GuessActivity extends AppCompatActivity {
 
         totalWins = findViewById(R.id.wins);
         scoreView = findViewById(R.id.highScore);
-        heads = findViewById(R.id.heads);
-        tails = findViewById(R.id.tails);
+        headsButton = findViewById(R.id.heads);
+        headsButton.setOnClickListener(this);
+        tailsButton = findViewById(R.id.tails);
+        tailsButton.setOnClickListener(this);
         rightAnswerImage = findViewById(R.id.rightAnswer);
         wrongAnswerImage = findViewById(R.id.wrongAnswer);
 

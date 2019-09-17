@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private static final String TAG = "MyActivity";
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         webViewButton = findViewById(R.id.webViewButton);
         testButton = findViewById(R.id.testButton);
+        testButton.setOnClickListener(this);
         testText = findViewById(R.id.testText);
         headsOrTails = findViewById(R.id.headsOrTailsButton);
     }
