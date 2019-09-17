@@ -12,5 +12,7 @@
     <string name="highScore"> </string>
     <string name="score">High score:</string>
 
+    <string name="webView"></string>
+
 
 </resources>
