@@ -41,11 +41,15 @@ public class MainActivity extends AppCompatActivity {
         Intent webIntent = new Intent(Intent.ACTION_VIEW, webPage);
         startActivity(webIntent);
     }
+
+    public void setTextViewVisibility() {
+        testText.setVisibility(testText.getVisibility() == View.VISIBLE ? View.GONE: View.VISIBLE);
+    }
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.testButton:
                 Log.i(TAG, "working");
-                testText.setVisibility(testText.getVisibility() == View.VISIBLE ? View.GONE: View.VISIBLE);
+                setTextViewVisibility();
                 break;
 
             case R.id.headsOrTailsButton:
