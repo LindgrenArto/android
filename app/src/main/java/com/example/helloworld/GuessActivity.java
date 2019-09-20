@@ -18,8 +18,8 @@ public class GuessActivity extends AppCompatActivity implements View.OnClickList
 
     private static final String TAG = "Guess activity";
 
-    Button heads;
-    Button tails;
+    Button headsButton;
+    Button tailsButton;
     TextView totalWins;
     TextView scoreView;
     int currentWins;
@@ -37,10 +37,10 @@ public class GuessActivity extends AppCompatActivity implements View.OnClickList
 
         totalWins = findViewById(R.id.wins);
         scoreView = findViewById(R.id.highScore);
-        heads = findViewById(R.id.heads);
-        heads.setOnClickListener(this);
-        tails = findViewById(R.id.tails);
-        tails.setOnClickListener(this);
+        headsButton = findViewById(R.id.heads);
+        headsButton.setOnClickListener(this);
+        tailsButton = findViewById(R.id.tails);
+        tailsButton.setOnClickListener(this);
         rightAnswerImage = findViewById(R.id.rightAnswer);
         wrongAnswerImage = findViewById(R.id.wrongAnswer);
 
@@ -117,8 +117,8 @@ public class GuessActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
 
-            default:
-                break;
+                default:
+                    break;
 
         }
     }
