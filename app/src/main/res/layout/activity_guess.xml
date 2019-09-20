@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_liquid_cheese"
+    android:background="@drawable/ic_subtle_stripes"
     android:scrollbarSize="50dp"
     tools:context=".GuessActivity">
 
@@ -16,8 +16,9 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="106dp"
         android:gravity="center|center_horizontal"
-        android:text="@string/headtail"
+        android:text="@string/kruuna_vai_klaava_d"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.402"
@@ -32,7 +33,7 @@
         android:layout_marginTop="236dp"
         android:layout_marginEnd="48dp"
         android:onClick="onClick"
-        android:text="@string/heads"
+        android:text="@string/kruuna"
         app:layout_constraintEnd_toStartOf="@+id/tails"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +46,7 @@
         android:layout_marginTop="236dp"
         android:layout_marginEnd="92dp"
         android:onClick="onClick"
-        android:text="@string/tails"
+        android:text="@string/klaava"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -118,7 +119,7 @@
         android:layout_marginEnd="21dp"
         android:layout_marginBottom="96dp"
         android:gravity="center"
-        android:text="@string/score"
+        android:text="@string/korkein_tulos"
         android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/highScore"

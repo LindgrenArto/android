@@ -4,15 +4,16 @@
     <string name="desc">Mydescript</string>
     <string name="textView">Hello World!</string>
     <string name="guess">Heads or Tails</string>
-
-    <string name="heads">Heads</string>
-    <string name="tails">Tails</string>
-    <string name="headtail">Heads or Tails</string>
+    <string name="webView"></string>
+    <string name="pelaa_peli">Pelaa peliä</string>
+    <string name="korkein_tulos">Korkein tulos:</string>
+    <string name="klaava">Klaava</string>
+    <string name="kruuna">Kruuna</string>
     <string name="zero">0</string>
     <string name="highScore"> </string>
-    <string name="score">High score:</string>
-
-    <string name="webView"></string>
+    <string name="kruuna_vai_klaava_d">Kruuna vai Klaava :D</string>
+    <string name="CS">Counter-strike</string>
+    <string name="piilota_n_yt">Piilota/Näytä</string>
 
 
 </resources>
