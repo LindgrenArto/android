@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_vanishing_stripes"
+    android:background="@drawable/ic_liquid_cheese"
     tools:context=".MainActivity">
 
     <TextView
@@ -18,7 +18,7 @@
         android:background="#D5B63F3F"
         android:fontFamily="casual"
         android:gravity="center"
-        android:text="@string/CS"
+        android:text="@string/textView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/testButton"
@@ -48,7 +48,7 @@
         android:layout_marginStart="161dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="29dp"
-        android:text="@string/piilota_n_yt"
+        android:text="@string/test"
         app:layout_constraintBottom_toTopOf="@+id/headsOrTailsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -62,7 +62,7 @@
         android:layout_marginEnd="132dp"
         android:layout_marginBottom="50dp"
         android:onClick="activateGuess"
-        android:text="@string/pelaa_peli"
+        android:text="@string/guess"
         app:layout_constraintBottom_toTopOf="@+id/webViewButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
