@@ -1,8 +1,14 @@
 package com.example.helloworld;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,17 +19,22 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private static final String TAG = "MyActivity";
 
+    private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+
     ImageButton webViewButton;
     Button testButton;
     TextView testText;
     Button headsOrTails;
     BroadcastReceiver br;
+    LocationManager locationManager;
+    Location location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +52,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
         this.registerReceiver(br, filter);
 
+        locationManager =(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        LocationListener locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+
+            }
+
+            @Override
+            public void onStatusChanged(String s, int i, Bundle bundle) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String s) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String s) {
+
+            }
+        };
+        if(locationManager == null) {
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        }
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION );
+        } else {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+
+            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        }
     }
+
 
     protected void onDestroy() {
         super.onDestroy();
