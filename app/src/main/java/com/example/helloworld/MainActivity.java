@@ -1,6 +1,9 @@
 package com.example.helloworld;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button testButton;
     TextView testText;
     Button headsOrTails;
+    BroadcastReceiver br;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         testButton.setOnClickListener(this);
         testText = findViewById(R.id.testText);
         headsOrTails = findViewById(R.id.headsOrTailsButton);
+
+        br = new AirPlaneModeReceiver();
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        this.registerReceiver(br, filter);
+
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(br);
     }
 
     public void activateGuess(View view) {
