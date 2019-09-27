@@ -14,5 +14,6 @@
 
     <string name="webView"></string>
 
+    <string name="location"></string>
 
 </resources>
