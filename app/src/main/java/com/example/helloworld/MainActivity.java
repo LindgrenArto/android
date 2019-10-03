@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
 
     ImageButton webViewButton;
+    ImageButton timerButton;
     Button testButton;
     TextView testText;
     TextView locationText;
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         webViewButton = findViewById(R.id.webViewButton);
+        webViewButton.setOnClickListener(this);
+        timerButton = findViewById(R.id.timerButton);
+        timerButton.setOnClickListener(this);
         testButton = findViewById(R.id.testButton);
         testButton.setOnClickListener(this);
         testText = findViewById(R.id.testText);
@@ -91,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION );
         } else {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 50000, 0, locationListener);
 
             location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         }
@@ -125,6 +129,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, GuessActivity.class);
         startActivity(intent);
     }
+    public void activateTimer(View view) {
+        Intent intent = new Intent(this, TimerActivity.class);
+        startActivity(intent);
+    }
     public void activateWebPage(View view) {
         Uri webPage = Uri.parse("https://google.com/maps?q="+ currentLocation + "&output-embed");
         Intent webIntent = new Intent(Intent.ACTION_VIEW, webPage);
@@ -147,6 +155,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.webViewButton:
                 activateWebPage(view);
+                break;
+
+            case R.id.timerButton:
+                Log.i(TAG, "workd");
+                activateTimer(view);
                 break;
         }
     }

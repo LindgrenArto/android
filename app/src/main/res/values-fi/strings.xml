@@ -12,9 +12,32 @@
     <string name="zero">0</string>
     <string name="highScore"> </string>
     <string name="score">Huipputulos:</string>
+    <string name="right"></string>
+    <string name="wrong"></string>
 
     <string name="webView"> </string>
 
     <string name="location"> </string>
+    <string name="timerButton"> </string>
+
+    <string name="toggleButton"></string>
+
+    <string-array name="timer_array">
+        <item></item>
+        <item>5 s</item>
+        <item>10 s</item>
+        <item>15 s</item>
+        <item>20 s</item>
+        <item>25 s</item>
+        <item>30 s</item>
+        <item>35 s</item>
+        <item>40 s</item>
+        <item>45 s</item>
+        <item>50 s</item>
+        <item>55 s</item>
+        <item>60 s</item>
+    </string-array>
+
+    <string name="timerText"></string>
 
 </resources>
