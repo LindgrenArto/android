@@ -7,22 +7,22 @@
 
     <string name="heads">Heads</string>
     <string name="tails">Tails</string>
-    <string name="headtail">Heads or Tails</string>
+    <string name="headTail">Heads or Tails</string>
     <string name="zero">0</string>
     <string name="highScore"> </string>
     <string name="score">High score:</string>
-    <string name="right"></string>
-    <string name="wrong"></string>
+    <string name="right"> </string>
+    <string name="wrong"> </string>
 
-    <string name="webView"></string>
+    <string name="webView"> </string>
 
-    <string name="location"></string>
-    <string name="timerButton"></string>
+    <string name="location"> </string>
+    <string name="timerButton"> </string>
 
-    <string name="toggleButton"></string>
+    <string name="toggleButton"> </string>
 
     <string-array name="timer_array">
-        <item></item>
+        <item> </item>
         <item>5 s</item>
         <item>10 s</item>
         <item>15 s</item>
@@ -37,5 +37,9 @@
         <item>60 s</item>
     </string-array>
 
-    <string name="timerText"></string>
+    <string name="timerText"> </string>
+
+    <string name="timerTextOn">Off</string>
+    <string name="timerTextOff">On</string>
+    <string name="stopWatchImage"> </string>
 </resources>
