@@ -21,21 +21,22 @@
     <string name="timerButton"> </string>
 
     <string name="toggleButton"> </string>
+    <string name="pauseButton">Pysäytä</string>
 
     <string-array name="timer_array">
-        <item> </item>
-        <item>5 s</item>
-        <item>10 s</item>
-        <item>15 s</item>
-        <item>20 s</item>
-        <item>25 s</item>
-        <item>30 s</item>
-        <item>35 s</item>
-        <item>40 s</item>
-        <item>45 s</item>
-        <item>50 s</item>
-        <item>55 s</item>
-        <item>60 s</item>
+        <item>Sekunteja</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
     </string-array>
 
     <string name="timerText"> </string>

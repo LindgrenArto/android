@@ -10,15 +10,14 @@
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginEnd="163dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginEnd="23dp"
         android:layout_marginBottom="124dp"
         android:text="@string/toggleButton"
         android:textOff="@string/timerTextOff"
         android:textOn="@string/timerTextOn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/pauseButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
@@ -75,5 +74,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textClock"
         app:srcCompat="@drawable/ic_timer_svgrepo_com" />
+
+    <Button
+        android:id="@+id/pauseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="22dp"
+        android:backgroundTint="#00CEC1C1"
+        android:text="@string/pauseButton"
+        android:textColor="#0E0D0D"
+        app:layout_constraintBottom_toTopOf="@+id/timerTextView"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
