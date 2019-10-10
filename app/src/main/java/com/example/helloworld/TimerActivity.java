@@ -2,6 +2,7 @@ package com.example.helloworld;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.os.Bundle;
@@ -9,10 +10,13 @@ import android.os.CountDownTimer;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,12 +36,18 @@ public class TimerActivity extends AppCompatActivity implements AdapterView.OnIt
     ToggleButton toggleButton;
     boolean isPaused;
     long timeLeft;
+    ImageView timerImage;
+    Animation timerAnimation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
 
+        timerAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.rotatetimer);
+        timerImage = findViewById(R.id.timerImageView);
         timerText = findViewById(R.id.timerTextView);
         pauseButton = findViewById(R.id.pauseButton);
         pauseButton.setOnClickListener(this);
@@ -47,22 +57,26 @@ public class TimerActivity extends AppCompatActivity implements AdapterView.OnIt
         toggleButton = (ToggleButton) findViewById(R.id.toggleButton);
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked ) {
-                    if(isPaused) {
-                      pausedTimer();
-                      isPaused = false;
+               if(startTime != null) {
+                    if (isChecked) {
+                        if (isPaused) {
+                            pausedTimer();
+                            isPaused = false;
+                        } else {
+                            Log.i("timer", "päällä");
+                            countDownTimer();
+                        }
                     } else {
-                        Log.i("timer", "päällä");
-                        countDownTimer();
+                        // The toggle is disabled
+                        Log.i("timer", "pois");
+                        defaultRingtone.stop();
                     }
-                } else {
-                    // The toggle is disabled
-                    Log.i("timer", "pois");
-                    defaultRingtone.stop();
+                 } else {
+                    Context context = getApplicationContext();
+                    Toast.makeText( context,"Set time!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
         spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
@@ -82,6 +96,7 @@ public class TimerActivity extends AppCompatActivity implements AdapterView.OnIt
             }
             public void onFinish() {
                 defaultRingtone.play();
+                timerImage.startAnimation(timerAnimation);
                 timerText.setText("Done!");
             }
         }.start();
@@ -94,6 +109,7 @@ public class TimerActivity extends AppCompatActivity implements AdapterView.OnIt
             }
             public void onFinish() {
                 defaultRingtone.play();
+                timerImage.startAnimation(timerAnimation);
                 timerText.setText("Done!");
             }
         }.start();
@@ -104,7 +120,9 @@ public class TimerActivity extends AppCompatActivity implements AdapterView.OnIt
             case R.id.pauseButton:
                 Log.i("TAGI", "pausebutton");
                 isPaused = true;
-                countDownTimer.cancel();
+                if(countDownTimer != null) {
+                    countDownTimer.cancel();
+                }
                toggleButton.setChecked(false);
                defaultRingtone.stop();
                 break;

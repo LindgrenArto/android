@@ -157,7 +157,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.timerButton:
-                Log.i(TAG, "workd");
                 activateTimer(view);
                 break;
         }

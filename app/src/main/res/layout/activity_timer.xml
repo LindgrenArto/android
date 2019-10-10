@@ -61,7 +61,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/timerImageView"
         android:layout_width="179dp"
         android:layout_height="297dp"
         android:layout_marginStart="116dp"
