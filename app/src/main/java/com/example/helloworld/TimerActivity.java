@@ -50,6 +50,7 @@ public class TimerActivity extends AppCompatActivity implements AdapterView.OnIt
         timerImage = findViewById(R.id.timerImageView);
         timerText = findViewById(R.id.timerTextView);
         pauseButton = findViewById(R.id.pauseButton);
+        pauseButton.setVisibility(View.GONE);
         pauseButton.setOnClickListener(this);
         defaultRingtone = RingtoneManager.getRingtone(this,
                 Settings.System.DEFAULT_RINGTONE_URI);
@@ -59,6 +60,7 @@ public class TimerActivity extends AppCompatActivity implements AdapterView.OnIt
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                if(startTime != null) {
                     if (isChecked) {
+                        pauseButton.setVisibility(View.VISIBLE);
                         if (isPaused) {
                             pausedTimer();
                             isPaused = false;
@@ -69,6 +71,7 @@ public class TimerActivity extends AppCompatActivity implements AdapterView.OnIt
                     } else {
                         // The toggle is disabled
                         Log.i("timer", "pois");
+                        pauseButton.setVisibility(View.GONE);
                         defaultRingtone.stop();
                     }
                  } else {

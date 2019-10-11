@@ -6,18 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".TimerActivity">
 
+
     <ToggleButton
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="176dp"
         android:text="@string/toggleButton"
         android:textOff="@string/timerTextOff"
         android:textOn="@string/timerTextOn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/pauseButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
@@ -26,11 +25,11 @@
         android:layout_height="27dp"
         android:layout_marginStart="111dp"
         android:layout_marginEnd="112dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/toggleButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <TextClock
         android:id="@+id/textClock"
@@ -53,7 +52,7 @@
         android:layout_height="54dp"
         android:layout_marginStart="133dp"
         android:layout_marginEnd="133dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="32dp"
         android:gravity="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,12 +78,16 @@
         android:id="@+id/pauseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="21dp"
         android:backgroundTint="#00CEC1C1"
         android:text="@string/pauseButton"
         android:textColor="#0E0D0D"
         app:layout_constraintBottom_toTopOf="@+id/timerTextView"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggleButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
