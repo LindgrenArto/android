@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/ic_liquid_cheese"
     android:scrollbarSize="50dp"
-    tools:context=".GuessActivity">
+    tools:context=".GuessPackage.GuessActivity">
 
     <TextView
         android:id="@+id/textView2"

@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.example.helloworld.MainPackage;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.AnimationDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -24,6 +23,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.helloworld.AirPlanePackage.AirPlaneModeReceiver;
+import com.example.helloworld.ContactsPackage.ContactsActivity;
+import com.example.helloworld.GuessPackage.GuessActivity;
+import com.example.helloworld.R;
+import com.example.helloworld.TimerPackage.TimerActivity;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -35,8 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
 
-    ImageButton webViewButton;
-    ImageButton timerButton;
+    ImageButton webViewButton, timerButton, contactsButton;
     Button testButton;
     TextView testText;
     TextView locationText;
@@ -57,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         timerButton.setOnClickListener(this);
         testButton = findViewById(R.id.testButton);
         testButton.setOnClickListener(this);
+        contactsButton = findViewById(R.id.contactsButton);
+        contactsButton.setOnClickListener(this);
         testText = findViewById(R.id.testText);
         locationText = findViewById(R.id.locationTextView);
         headsOrTails = findViewById(R.id.headsOrTailsButton);
@@ -132,6 +138,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, TimerActivity.class);
         startActivity(intent);
     }
+    public void activateContacts(View view) {
+        Intent intent = new Intent(this, ContactsActivity.class);
+        startActivity(intent);
+    }
     public void activateWebPage(View view) {
         Uri webPage = Uri.parse("https://google.com/maps?q="+ currentLocation + "&output-embed");
         Intent webIntent = new Intent(Intent.ACTION_VIEW, webPage);
@@ -158,6 +168,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.timerButton:
                 activateTimer(view);
+                break;
+
+                case R.id.contactsButton:
+                activateContacts(view);
                 break;
         }
     }

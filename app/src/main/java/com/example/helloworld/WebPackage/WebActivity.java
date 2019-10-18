@@ -1,9 +1,11 @@
-package com.example.helloworld;
+package com.example.helloworld.WebPackage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.webkit.WebView;
+
+import com.example.helloworld.R;
 
 public class WebActivity extends AppCompatActivity {
 

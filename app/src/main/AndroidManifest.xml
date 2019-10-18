@@ -13,19 +13,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TimerActivity"
-            android:parentActivityName=".MainActivity" ></activity>
+        <activity
+            android:name=".ContactsPackage.ContactsActivity"
+            android:label="@string/title_activity_contacts"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".TimerPackage.TimerActivity"
+            android:parentActivityName=".MainPackage.MainActivity" />
 
         <receiver
-            android:name=".AirPlaneModeReceiver"
+            android:name=".AirPlanePackage.AirPlaneModeReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
 
-        <activity android:name=".WebActivity" />
+        <activity android:name=".WebPackage.WebActivity" />
         <activity
-            android:name=".GuessActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+            android:name=".GuessPackage.GuessActivity"
+            android:parentActivityName=".MainPackage.MainActivity" />
+        <activity android:name=".MainPackage.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

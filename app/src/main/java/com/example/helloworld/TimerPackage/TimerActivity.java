@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.example.helloworld.TimerPackage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +21,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import com.example.helloworld.R;
 
 import java.sql.Time;
 

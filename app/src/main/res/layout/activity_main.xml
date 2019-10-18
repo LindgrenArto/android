@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_liquid_cheese"
-    tools:context=".MainActivity">
+    tools:context=".MainPackage.MainActivity">
 
     <TextView
         android:id="@+id/testText"
@@ -104,5 +104,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/webViewButton"
         app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
+
+    <ImageButton
+        android:id="@+id/contactsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="45dp"
+        android:contentDescription="@string/contactsButton"
+        app:layout_constraintBottom_toTopOf="@+id/locationTextView"
+        app:layout_constraintEnd_toStartOf="@+id/timerButton"
+        app:layout_constraintStart_toEndOf="@+id/webViewButton"
+        app:srcCompat="@android:drawable/ic_input_get" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

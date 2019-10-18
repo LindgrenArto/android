@@ -19,6 +19,7 @@
 
     <string name="location"> </string>
     <string name="timerButton"> </string>
+    <string name="contactsButton"> </string>
 
     <string name="toggleButton"> </string>
     <string name="pauseButton">Pysäytä</string>
@@ -43,4 +44,10 @@
     <string name="timerTextOn">Off</string>
     <string name="timerTextOff">On</string>
     <string name="stopWatchImage"> </string>
+    <string name="title_activity_contacts">ContactsActivity</string>
+
+    <string name="contactsText"> </string>
+    <string name="firstNameContact"> </string>
+    <string name="lastNameContact"> </string>
+
 </resources>

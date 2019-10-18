@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WebPackage.WebActivity">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ContactsPackage.ContactsActivity"
+    tools:showIn="@layout/activity_contacts">
 
-    <WebView
-        android:id="@+id/myWebView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contactRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="52dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
