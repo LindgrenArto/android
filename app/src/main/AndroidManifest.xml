@@ -16,7 +16,9 @@
         <activity
             android:name=".ContactsPackage.ContactsActivity"
             android:label="@string/title_activity_contacts"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainPackage.MainActivity"/>
+
         <activity
             android:name=".TimerPackage.TimerActivity"
             android:parentActivityName=".MainPackage.MainActivity" />

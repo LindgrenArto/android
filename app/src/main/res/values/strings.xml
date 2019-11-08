@@ -49,5 +49,7 @@
     <string name="contactsText"> </string>
     <string name="firstNameContact"> </string>
     <string name="lastNameContact"> </string>
+    <string name="phoneNumberContact"> </string>
+    <string name="emailAddressContact"> </string>
 
 </resources>

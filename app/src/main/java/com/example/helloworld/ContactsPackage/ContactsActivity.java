@@ -7,22 +7,25 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.helloworld.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.widget.SearchView;
+
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.BaseAdapter;
+import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -34,24 +37,35 @@ import java.util.List;
 public class ContactsActivity extends AppCompatActivity {
 
 
-    private RecyclerView recyclerView;
-    private RecycleAdapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
+    RecyclerView recyclerView;
+    RecycleAdapter adapter;
+    RecyclerView.LayoutManager layoutManager;
+    RequestQueue requestQueue;
 
-    List<Contact> contacts;
-    Contact contact;
+    List<Contact> contactsList;
+    String url = "https://digitradecontacs2019.azurewebsites.net/api/contacts";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        contacts =  new ArrayList<Contact>();
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
+        getData();
+        recyclerView = (RecyclerView) findViewById(R.id.contactRecycler);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        adapter = new RecycleAdapter(this, contactsList);
+        recyclerView.setAdapter(adapter);
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -61,60 +75,96 @@ public class ContactsActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-
             }
         });
+    }
 
-        recyclerView = (RecyclerView) findViewById(R.id.contactRecycler);
 
-        recyclerView.setHasFixedSize(true);
+    private void getData() {
+        requestQueue = AzureSingleton.getInstance(this.getApplicationContext()).getRequestQueue();
 
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        mAdapter = new RecycleAdapter(this, contacts);
-        recyclerView.setAdapter(mAdapter);
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://digitradecontacs2019.azurewebsites.net/api/contacts";
-
+        contactsList = new ArrayList<>();
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
                     @Override
                     public void onResponse(JSONArray response) {
-                        try
-                        {
-                             for(int i = 0; i < response.length(); i++) {
+                        try {
+                            for (int i = 0; i < response.length(); i++) {
 
-                                 contact = new Contact();
-                                 contact.firstName = response.getJSONObject(i).getString("firstName");
-                                 contact.lastName = response.getJSONObject(i).getString("lasttName");
-                                 contact.phoneNumber = response.getJSONObject(i).getInt("phoneNumber");
-                                 contact.streetAddress = response.getJSONObject(i).getString("streetAddress");
-                                 contact.city = response.getJSONObject(i).getString("city");
-                                 contact.postalCode = response.getJSONObject(i).getInt("postalCode");
-                                 contact.emailAddress = response.getJSONObject(i).getString("emailAddress");
+                                Contact contacts = new Contact();
+                                JSONObject contact = response.getJSONObject(i);
 
-                                 contacts.add(contact);
+                                contacts.setFirstName(contact.getString("title"));
+                                contacts.setLastName(contact.getString("lastName"));
+                                contacts.setEmailAddress(contact.getString("emailAddress"));
+                                contacts.setCity(contact.getString("city"));
+                                contacts.setStreetAddress(contact.getString("streetAddress"));
+                                contacts.setId(contact.getInt("id"));
+                                contacts.setPhoneNumber(contact.getInt("phoneNumber"));
+                                contacts.setPostalCode(contact.getInt("postalCode"));
 
-                                 Log.i("Contacts", contacts.toString());
-                                 }
-                        } catch(Exception e) {
+                                contactsList.add(contacts);
+
+                                Log.i("Contacts", contact.toString());
+                            }
+                        } catch (Exception e) {
                             //error
                         }
+                        adapter.notifyDataSetChanged();
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                     Log.i("Contacts", "EI toimi");
+                        Log.i("Contacts", "EI toimi");
 
                     }
                 });
-
-                AzureSingleton.getInstance(this).addToRequestQueue(jsonArrayRequest);
-
-
+        requestQueue.add(jsonArrayRequest);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+       SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.i("teksti", newText);
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.gridLayout:
+                Log.i("TAGSÖn", "gridi");
+                recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+                return true;
+            case R.id.listLayout:
+                recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+                Log.i("TAGIIIII", "lista");
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
