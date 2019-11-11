@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.example.helloworld.AirPlanePackage.AirPlaneModeReceiver;
+import com.example.helloworld.AlarmClockPackage.AlarmClockActivity;
 import com.example.helloworld.ContactsPackage.ContactsActivity;
 import com.example.helloworld.GuessPackage.GuessActivity;
 import com.example.helloworld.R;
@@ -41,10 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
 
     ImageButton webViewButton, timerButton, contactsButton;
-    Button testButton;
-    TextView testText;
-    TextView locationText;
-    Button headsOrTails;
+    Button testButton, headsOrTails, alarmClockButton;;
+    TextView testText, locationText;
     BroadcastReceiver br;
     LocationManager locationManager;
     Location location;
@@ -66,6 +65,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         testText = findViewById(R.id.testText);
         locationText = findViewById(R.id.locationTextView);
         headsOrTails = findViewById(R.id.headsOrTailsButton);
+
+        alarmClockButton = findViewById(R.id.alarmClockButton);
+        alarmClockButton.setOnClickListener(this);
 
         br = new AirPlaneModeReceiver();
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
@@ -142,6 +144,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, ContactsActivity.class);
         startActivity(intent);
     }
+    public void activateAlarmClock(View view) {
+        Intent intent = new Intent(this, AlarmClockActivity.class);
+        startActivity(intent);
+    }
     public void activateWebPage(View view) {
         Uri webPage = Uri.parse("https://google.com/maps?q="+ currentLocation + "&output-embed");
         Intent webIntent = new Intent(Intent.ACTION_VIEW, webPage);
@@ -173,6 +179,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.contactsButton:
                 activateContacts(view);
                 break;
+
+            case R.id.alarmClockButton:
+                activateAlarmClock(view);
+                break;
+
         }
     }
 }

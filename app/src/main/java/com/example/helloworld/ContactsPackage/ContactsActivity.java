@@ -60,13 +60,6 @@ public class ContactsActivity extends AppCompatActivity {
         }
 
         getData();
-        recyclerView = (RecyclerView) findViewById(R.id.contactRecycler);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        layoutManager = new LinearLayoutManager(this);
-        adapter = new RecycleAdapter(this, contactsList);
-        recyclerView.setAdapter(adapter);
-
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +89,7 @@ public class ContactsActivity extends AppCompatActivity {
                                 Contact contacts = new Contact();
                                 JSONObject contact = response.getJSONObject(i);
 
-                                contacts.setFirstName(contact.getString("title"));
+                                contacts.setFirstName(contact.getString("firstName"));
                                 contacts.setLastName(contact.getString("lastName"));
                                 contacts.setEmailAddress(contact.getString("emailAddress"));
                                 contacts.setCity(contact.getString("city"));
@@ -106,13 +99,12 @@ public class ContactsActivity extends AppCompatActivity {
                                 contacts.setPostalCode(contact.getInt("postalCode"));
 
                                 contactsList.add(contacts);
-
-                                Log.i("Contacts", contact.toString());
+                                Log.i("Contacts",contacts.toString() );
                             }
                         } catch (Exception e) {
                             //error
                         }
-                        adapter.notifyDataSetChanged();
+                        SetupRecycler();
                     }
                 }, new Response.ErrorListener() {
 
@@ -151,6 +143,15 @@ public class ContactsActivity extends AppCompatActivity {
         return true;
     }
 
+    private void SetupRecycler() {
+        recyclerView = (RecyclerView) findViewById(R.id.contactRecycler);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        layoutManager = new LinearLayoutManager(this);
+        adapter = new RecycleAdapter(this, contactsList);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

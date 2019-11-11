@@ -21,6 +21,8 @@
     <string name="timerButton"> </string>
     <string name="contactsButton"> </string>
 
+    <string name="alarmClockButton">Herätyskello</string>
+
     <string name="toggleButton"> </string>
     <string name="pauseButton">Pysäytä</string>
 
@@ -51,4 +53,6 @@
     <string name="lastNameContact"> </string>
     <string name="phoneNumberContact"> </string>
     <string name="emailAddressContact"> </string>
+    <string name="title_activity_alarm_clock">Herätyskello</string>
+
 </resources>

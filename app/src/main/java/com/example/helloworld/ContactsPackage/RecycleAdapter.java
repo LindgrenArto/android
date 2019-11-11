@@ -33,10 +33,10 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.GridItem
 
         this.context = context;
         this.contacts = contacts;
-        contactsFull = new ArrayList<>(contacts); {
+       this.contactsFull = new ArrayList<>(contacts); {
         }
 
-        Log.i("recycler contact", contacts.toString());
+        Log.i("recycler contact", contactsFull.toString());
     }
 
 
@@ -56,11 +56,11 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.GridItem
     public void onBindViewHolder(GridItemViewHolder holder, final int position) {
         Contact contact = contacts.get(position);
 
-        holder.firstName.setText(contact.getFirstName());
-        holder.lastName.setText(contact.getLastName());
+        holder.firstName.setText(contact.getFirstName()+ " " + contact.getLastName());
+        // holder.lastName.setText(contact.getLastName());
 
-       // holder.emailAddress.setText(contact.getEmailAddress());
-       //  holder.phoneNumber.setText(contact.getPhoneNumber());
+       holder.emailAddress.setText(contact.getEmailAddress());
+        holder.phoneNumber.setText(contact.getPhoneNumber());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +100,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.GridItem
     }
 
     public class GridItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-         TextView firstName, lastName, phoneNumber, emailAddress;
+         TextView firstName, phoneNumber, emailAddress;
          RecycleAdapter mAdapter;
          CardView cardView;
          LinearLayout cardContent;
@@ -112,7 +112,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.GridItem
 
             cardView = (CardView) itemView.findViewById(R.id.cardViewId);
             firstName = (TextView) itemView.findViewById(R.id.firstName);
-            lastName = (TextView) itemView.findViewById(R.id.lastName);
+
             phoneNumber = (TextView) itemView.findViewById(R.id.phoneNumber);
             emailAddress = (TextView) itemView.findViewById(R.id.emailAddress);
 
@@ -146,21 +146,20 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.GridItem
         protected FilterResults performFiltering(CharSequence constraint) {
             List<Contact> filteredList = new ArrayList<>();
 
-            if(constraint == null || constraint.length() == 0) {
+            if (constraint == null || constraint.length() == 0) {
                 filteredList.addAll(contactsFull);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
-
-                for(Contact item : contactsFull) {
-                    if(item.getFirstName().toLowerCase().contains(filterPattern)) {
-                        filteredList.add(item);
+                for (Contact contact : contactsFull) {
+                    if(contact.getFirstName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(contact);
                     }
                 }
             }
             FilterResults results = new FilterResults();
             results.values = filteredList;
-
             return  results;
+
         }
 
         @Override

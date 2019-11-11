@@ -20,6 +20,8 @@
     <string name="timerButton"> </string>
     <string name="contactsButton"> </string>
 
+    <string name="alarmClockButton">Alarm Clock</string>
+
     <string name="toggleButton"> </string>
     <string name="pauseButton">Pause</string>
 
@@ -51,5 +53,6 @@
     <string name="lastNameContact"> </string>
     <string name="phoneNumberContact"> </string>
     <string name="emailAddressContact"> </string>
+    <string name="title_activity_alarm_clock">AlarmClock</string>
 
 </resources>
