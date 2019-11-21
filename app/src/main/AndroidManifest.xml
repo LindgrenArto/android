@@ -14,11 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AlarmClockPackage.AlarmClockActivity"></activity>
         <activity
-            android:name=".AlarmClockPackage.AlarmCLock"
+            android:name=".AlarmClockPackage.AlarmClockActivity"
             android:label="@string/title_activity_alarm_clock"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:parentActivityName=".MainPackage.MainActivity" />
         <activity
             android:name=".ContactsPackage.ContactsActivity"
             android:label="@string/title_activity_contacts"
@@ -37,7 +36,8 @@
         <activity
             android:name=".GuessPackage.GuessActivity"
             android:parentActivityName=".MainPackage.MainActivity" />
-        <activity android:name=".MainPackage.MainActivity">
+        <activity android:name=".MainPackage.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

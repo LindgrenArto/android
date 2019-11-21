@@ -37,14 +37,14 @@ public class GuessActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_guess);
         Log.i(TAG, "Guess Activity launched!");
 
-        totalWins = findViewById(R.id.wins);
-        scoreView = findViewById(R.id.highScore);
-        headsButton = findViewById(R.id.heads);
+        totalWins = findViewById(R.id.guess_activity_winsText);
+        scoreView = findViewById(R.id.guess_activity_highScoreText);
+        headsButton = findViewById(R.id.guess_activity_headsButton);
         headsButton.setOnClickListener(this);
-        tailsButton = findViewById(R.id.tails);
+        tailsButton = findViewById(R.id.guess_activity_tailsButton);
         tailsButton.setOnClickListener(this);
-        rightAnswerImage = findViewById(R.id.rightAnswer);
-        wrongAnswerImage = findViewById(R.id.wrongAnswer);
+        rightAnswerImage = findViewById(R.id.guess_activity_rightAnswerImage);
+        wrongAnswerImage = findViewById(R.id.guess_activity_wrongAnswerImage);
 
         Intent intent = new Intent(this, GuessActivity.class);
         intent.putExtra(best, highScore);
@@ -93,7 +93,7 @@ public class GuessActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view){
         int rnd = getRnd();
         switch (view.getId()){
-            case R.id.heads:
+            case R.id.guess_activity_headsButton:
                 if(rnd == 0){
                     currentWins++;
                     setWinnings();
@@ -106,7 +106,7 @@ public class GuessActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
 
-            case R.id.tails:
+            case R.id.guess_activity_tailsButton:
                 if(rnd == 1){
                     currentWins++;
                     setWinnings();

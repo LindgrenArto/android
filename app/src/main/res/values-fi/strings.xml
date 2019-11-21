@@ -2,12 +2,12 @@
 <resources><string name="app_name">Hei maailma!</string>
     <string name="test">Testi</string>
     <string name="desc">Mydesc</string>
-    <string name="textView">Hei maailma!</string>
-    <string name="guess">Kruuna vai Klaava</string>
+    <string name="test_text_view">Hei maailma!</string>
+    <string name="guess_activity_header">Kruuna vai Klaava</string>
 
 
-    <string name="heads">Kruuna</string>
-    <string name="tails">Klaava</string>
+    <string name="heads_action_button">Kruuna</string>
+    <string name="tails_action_button">Klaava</string>
     <string name="headTail">Kruuna vai Klaava</string>
     <string name="zero">0</string>
     <string name="highScore"> </string>
@@ -54,5 +54,14 @@
     <string name="phoneNumberContact"> </string>
     <string name="emailAddressContact"> </string>
     <string name="title_activity_alarm_clock">Herätyskello</string>
+
+    <string name="navigation_drawer_open">Avaa</string>
+    <string name="navigation_drawer_close">Sulje</string>
+
+    <string name="nav_guess">Arvauspeli</string>
+    <string name="nav_alarm">Herätyskello</string>
+    <string name="nav_timer">Ajastin</string>
+    <string name="nav_contacts">Kontaktit</string>
+    <string name="nav_maps">Maps</string>
 
 </resources>

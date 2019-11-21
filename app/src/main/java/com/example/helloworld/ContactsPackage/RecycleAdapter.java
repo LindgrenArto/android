@@ -33,7 +33,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.GridItem
 
         this.context = context;
         this.contacts = contacts;
-       this.contactsFull = new ArrayList<>(contacts); {
+        this.contactsFull = new ArrayList<>(contacts); {
         }
 
         Log.i("recycler contact", contactsFull.toString());
@@ -59,8 +59,8 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.GridItem
         holder.firstName.setText(contact.getFirstName()+ " " + contact.getLastName());
         // holder.lastName.setText(contact.getLastName());
 
-       holder.emailAddress.setText(contact.getEmailAddress());
-        holder.phoneNumber.setText(contact.getPhoneNumber());
+      // holder.emailAddress.setText(contact.getEmailAddress());
+      //  holder.phoneNumber.setText(contact.getPhoneNumber());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,11 +110,11 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.GridItem
         public GridItemViewHolder(View itemView) {
             super(itemView);
 
-            cardView = (CardView) itemView.findViewById(R.id.cardViewId);
-            firstName = (TextView) itemView.findViewById(R.id.firstName);
+            cardView = (CardView) itemView.findViewById(R.id.recycle_card_view);
+            firstName = (TextView) itemView.findViewById(R.id.recycler_card_firstName);
 
-            phoneNumber = (TextView) itemView.findViewById(R.id.phoneNumber);
-            emailAddress = (TextView) itemView.findViewById(R.id.emailAddress);
+            phoneNumber = (TextView) itemView.findViewById(R.id.recycler_card_phoneNumber);
+            emailAddress = (TextView) itemView.findViewById(R.id.recycler_card_emailAddress);
 
             cardContent = (LinearLayout) itemView.findViewById(R.id.card_content);
 

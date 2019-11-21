@@ -9,7 +9,7 @@
     tools:context=".GuessPackage.GuessActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/guess_activity_textView"
         android:layout_width="276dp"
         android:layout_height="69dp"
         android:layout_marginStart="106dp"
@@ -25,32 +25,32 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/heads"
+        android:id="@+id/guess_activity_headsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="93dp"
         android:layout_marginTop="236dp"
         android:layout_marginEnd="48dp"
         android:onClick="onClick"
-        android:text="@string/heads"
-        app:layout_constraintEnd_toStartOf="@+id/tails"
+        android:text="@string/heads_action_button"
+        app:layout_constraintEnd_toStartOf="@+id/guess_activity_tailsButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/guess_activity_textView" />
 
     <Button
-        android:id="@+id/tails"
+        android:id="@+id/guess_activity_tailsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="236dp"
         android:layout_marginEnd="92dp"
         android:onClick="onClick"
-        android:text="@string/tails"
+        android:text="@string/tails_action_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/guess_activity_textView" />
 
     <TextView
-        android:id="@+id/wins"
+        android:id="@+id/guess_activity_winsText"
         android:layout_width="107dp"
         android:layout_height="64dp"
         android:layout_marginStart="177dp"
@@ -61,15 +61,15 @@
         android:text="@string/zero"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/heads"
+        app:layout_constraintBottom_toTopOf="@+id/guess_activity_headsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/guess_activity_textView"
         app:layout_constraintVertical_bias="0.456" />
 
     <TextView
-        android:id="@+id/highScore"
+        android:id="@+id/guess_activity_highScoreText"
         android:layout_width="83dp"
         android:layout_height="30dp"
         android:layout_marginStart="138dp"
@@ -85,7 +85,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/rightAnswer"
+        android:id="@+id/guess_activity_rightAnswerImage"
         android:layout_width="192dp"
         android:layout_height="367dp"
         android:layout_marginStart="13dp"
@@ -93,26 +93,26 @@
         android:layout_marginEnd="92dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/right"
-        app:layout_constraintBottom_toTopOf="@+id/tails"
+        app:layout_constraintBottom_toTopOf="@+id/guess_activity_tailsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/guess_activity_textView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_rightanswer" />
 
     <ImageView
-        android:id="@+id/wrongAnswer"
+        android:id="@+id/guess_activity_wrongAnswerImage"
         android:layout_width="198dp"
         android:layout_height="345dp"
         android:layout_marginStart="116dp"
         android:contentDescription="@string/wrong"
-        app:layout_constraintBottom_toTopOf="@+id/tails"
+        app:layout_constraintBottom_toTopOf="@+id/guess_activity_tailsButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_wronganswer" />
+        app:srcCompat="@drawable/ic_wrong_answer" />
 
     <TextView
-        android:id="@+id/score"
+        android:id="@+id/guess_activity_scoreText"
         android:layout_width="143dp"
         android:layout_height="48dp"
         android:layout_marginStart="46dp"
@@ -122,7 +122,7 @@
         android:text="@string/score"
         android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/highScore"
+        app:layout_constraintEnd_toStartOf="@+id/guess_activity_highScoreText"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent" />
 

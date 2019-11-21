@@ -15,13 +15,19 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.helloworld.AirPlanePackage.AirPlaneModeReceiver;
 import com.example.helloworld.AlarmClockPackage.AlarmClockActivity;
@@ -29,20 +35,23 @@ import com.example.helloworld.ContactsPackage.ContactsActivity;
 import com.example.helloworld.GuessPackage.GuessActivity;
 import com.example.helloworld.R;
 import com.example.helloworld.TimerPackage.TimerActivity;
+import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
 
     private static final String TAG = "MyActivity";
 
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
 
-    ImageButton webViewButton, timerButton, contactsButton;
-    Button testButton, headsOrTails, alarmClockButton;;
+    private DrawerLayout drawer;
+
+    ImageButton webViewButton;
+    Button testButton;
     TextView testText, locationText;
     BroadcastReceiver br;
     LocationManager locationManager;
@@ -54,27 +63,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        webViewButton = findViewById(R.id.webViewButton);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawer = findViewById(R.id.drawer_layout);
+
+        NavigationView navigation = findViewById(R.id.nav_view);
+        navigation.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        webViewButton = findViewById(R.id.webView_action);
         webViewButton.setOnClickListener(this);
-        timerButton = findViewById(R.id.timerButton);
-        timerButton.setOnClickListener(this);
-        testButton = findViewById(R.id.testButton);
+        testButton = findViewById(R.id.test_action);
         testButton.setOnClickListener(this);
-        contactsButton = findViewById(R.id.contactsButton);
-        contactsButton.setOnClickListener(this);
         testText = findViewById(R.id.testText);
         locationText = findViewById(R.id.locationTextView);
-        headsOrTails = findViewById(R.id.headsOrTailsButton);
-
-        alarmClockButton = findViewById(R.id.alarmClockButton);
-        alarmClockButton.setOnClickListener(this);
 
         br = new AirPlaneModeReceiver();
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
         this.registerReceiver(br, filter);
 
-        locationManager =(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         LocationListener locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
@@ -97,15 +111,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         };
-        if(locationManager == null) {
+        if (locationManager == null) {
             locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         }
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION );
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
         } else {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 50000, 0, locationListener);
 
             location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        switch (menuItem.getItemId()) {
+            case R.id.nav_alarm:
+                Intent intent = new Intent(MainActivity.this, AlarmClockActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_guess:
+                intent = new Intent(MainActivity.this, GuessActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_timer:
+                intent = new Intent(MainActivity.this, TimerActivity.class);
+                startActivity(intent);
+                break;
+
+                case R.id.nav_contacts:
+                intent = new Intent(MainActivity.this, ContactsActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 
@@ -116,8 +168,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     location.getLatitude(),
                     location.getLongitude(),
                     1);
-          Address address = addresses.get(0);
-          currentLocation = address.getAddressLine(0);
+            Address address = addresses.get(0);
+            currentLocation = address.getAddressLine(0);
 
         } catch (IOException e) {
             Log.e(TAG, "Error" + e);
@@ -132,56 +184,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         unregisterReceiver(br);
     }
 
-    public void activateGuess(View view) {
-        Intent intent = new Intent(this, GuessActivity.class);
-        startActivity(intent);
-    }
-    public void activateTimer(View view) {
-        Intent intent = new Intent(this, TimerActivity.class);
-        startActivity(intent);
-    }
-    public void activateContacts(View view) {
-        Intent intent = new Intent(this, ContactsActivity.class);
-        startActivity(intent);
-    }
-    public void activateAlarmClock(View view) {
-        Intent intent = new Intent(this, AlarmClockActivity.class);
-        startActivity(intent);
-    }
+
     public void activateWebPage(View view) {
-        Uri webPage = Uri.parse("https://google.com/maps?q="+ currentLocation + "&output-embed");
+        Uri webPage = Uri.parse("https://google.com/maps?q=" + currentLocation + "&output-embed");
         Intent webIntent = new Intent(Intent.ACTION_VIEW, webPage);
         startActivity(webIntent);
     }
 
     public void setTextViewVisibility() {
-        testText.setVisibility(testText.getVisibility() == View.VISIBLE ? View.GONE: View.VISIBLE);
+        testText.setVisibility(testText.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
     }
+
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.testButton:
+            case R.id.test_action:
                 Log.i(TAG, "working");
                 setTextViewVisibility();
                 break;
 
-            case R.id.headsOrTailsButton:
-                activateGuess(view);
-                break;
-
-            case R.id.webViewButton:
+            case R.id.webView_action:
                 activateWebPage(view);
-                break;
-
-            case R.id.timerButton:
-                activateTimer(view);
-                break;
-
-                case R.id.contactsButton:
-                activateContacts(view);
-                break;
-
-            case R.id.alarmClockButton:
-                activateAlarmClock(view);
                 break;
 
         }

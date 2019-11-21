@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextClock
-        android:id="@+id/textClock"
+        android:id="@+id/timer_activity_clock"
         android:layout_width="187dp"
         android:layout_height="74dp"
         android:layout_marginStart="146dp"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/timerTextView"
+        android:id="@+id/timer_activity_textView"
         android:layout_width="167dp"
         android:layout_height="54dp"
         android:layout_marginStart="133dp"
@@ -60,7 +60,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/timerImageView"
+        android:id="@+id/timer_activity_image"
         android:layout_width="179dp"
         android:layout_height="297dp"
         android:layout_marginStart="116dp"
@@ -71,11 +71,11 @@
         app:layout_constraintBottom_toTopOf="@+id/spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textClock"
+        app:layout_constraintTop_toBottomOf="@+id/timer_activity_clock"
         app:srcCompat="@drawable/ic_timer_svgrepo_com" />
 
     <Button
-        android:id="@+id/pauseButton"
+        android:id="@+id/timer_activity_pause_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="163dp"
@@ -85,7 +85,7 @@
         android:backgroundTint="#00CEC1C1"
         android:text="@string/pauseButton"
         android:textColor="#0E0D0D"
-        app:layout_constraintBottom_toTopOf="@+id/timerTextView"
+        app:layout_constraintBottom_toTopOf="@+id/timer_activity_textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toggleButton" />

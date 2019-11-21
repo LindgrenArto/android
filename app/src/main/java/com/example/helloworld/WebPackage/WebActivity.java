@@ -16,7 +16,7 @@ public class WebActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
 
-        webView = findViewById(R.id.myWebView);
+        webView = findViewById(R.id.activity_web_view);
 
        // webView.loadUrl("https://www.google.com");
     }

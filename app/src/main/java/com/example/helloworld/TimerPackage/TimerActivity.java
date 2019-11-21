@@ -24,8 +24,6 @@ import android.widget.ToggleButton;
 
 import com.example.helloworld.R;
 
-import java.sql.Time;
-
 public class TimerActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
 
@@ -49,9 +47,9 @@ public class TimerActivity extends AppCompatActivity implements AdapterView.OnIt
 
         timerAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.rotatetimer);
-        timerImage = findViewById(R.id.timerImageView);
-        timerText = findViewById(R.id.timerTextView);
-        pauseButton = findViewById(R.id.pauseButton);
+        timerImage = findViewById(R.id.timer_activity_image);
+        timerText = findViewById(R.id.timer_activity_textView);
+        pauseButton = findViewById(R.id.timer_activity_pause_action);
         pauseButton.setVisibility(View.GONE);
         pauseButton.setOnClickListener(this);
         defaultRingtone = RingtoneManager.getRingtone(this,
@@ -122,7 +120,7 @@ public class TimerActivity extends AppCompatActivity implements AdapterView.OnIt
 
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.pauseButton:
+            case R.id.timer_activity_pause_action:
                 Log.i("TAGI", "pausebutton");
                 isPaused = true;
                 if(countDownTimer != null) {

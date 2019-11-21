@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <item
+        android:id="@+id/nav_guess"
+        android:icon="@drawable/ic_thumbs_up_down_black_24dp"
+        android:title="@string/nav_guess" />
+
+    <item
+        android:id="@+id/nav_alarm"
+        android:icon="@drawable/ic_access_time_black_24dp"
+        android:title="@string/nav_alarm" />
+    <item
+        android:id="@+id/nav_timer"
+        android:icon="@drawable/ic_timer_black_24dp"
+        android:title="@string/nav_timer" />
+    <item
+        android:id="@+id/nav_contacts"
+        android:icon="@drawable/ic_contacts_black_24dp"
+        android:title="@string/nav_contacts" />
+
+
+
+</menu>
