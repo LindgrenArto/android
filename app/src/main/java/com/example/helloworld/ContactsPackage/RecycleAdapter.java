@@ -128,11 +128,11 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.GridItem
 
             mAdapter.onItemHolderClick(this);
 
-            if(cardContent.getVisibility() == View.VISIBLE)
+            if(cardContent.getVisibility() == View.GONE)
             {
-                cardContent.setVisibility(View.GONE);
-            } else {
                 cardContent.setVisibility(View.VISIBLE);
+            } else {
+                cardContent.setVisibility(View.GONE);
             }
         }
     }
