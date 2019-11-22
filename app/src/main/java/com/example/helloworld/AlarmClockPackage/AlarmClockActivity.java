@@ -24,7 +24,7 @@ public class AlarmClockActivity extends  AppCompatActivity
 {
     AlarmClockView alarm_clock_view;
      static Ringtone defaultRingtone;
-
+    static boolean isAlarmSet = false;
 
     public void onCreate( Bundle savedInstanceState )
     {
@@ -91,10 +91,13 @@ public class AlarmClockActivity extends  AppCompatActivity
             activate_alarm_button.setText("Activate Alarm");
             activate_alarm_button.setTextColor(Color.WHITE);
 
+            isAlarmSet = false;
         }
         else {
             activate_alarm_button.setText("Deactivate Alarm");
             activate_alarm_button.setTextColor(Color.RED);
+
+            isAlarmSet = true;
         }
 
     }
@@ -102,7 +105,7 @@ public class AlarmClockActivity extends  AppCompatActivity
 
     public static void activateAlarm(boolean activate) {
         // sound
-        if (activate) {
+        if (activate && isAlarmSet) {
             // start
             defaultRingtone.play();
 
