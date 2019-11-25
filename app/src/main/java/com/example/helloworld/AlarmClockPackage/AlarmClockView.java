@@ -35,7 +35,7 @@ public class AlarmClockView extends View implements Runnable
     Paint paint_for_alarm_hand  = new Paint() ;
 
     int alarm_hand_end_x, alarm_hand_end_y ;
-    int alarm_hour, alarm_minute ;
+   static int alarm_hour, alarm_minute ;
 
     // The following variable is set to true when the setting
     // of alarm time is activated from 'outside' this object.
@@ -416,6 +416,14 @@ public class AlarmClockView extends View implements Runnable
             if(current_hours == alarm_hour && current_minutes == alarm_minute) {
                 AlarmClockActivity.activateAlarm(true);
             }
+        }
+    }
+    public static void snooze() {
+        alarm_minute += 5;
+
+        if(alarm_minute >= 55) {
+            alarm_hour += 1;
+            alarm_minute = 00;
         }
     }
 
